@@ -69,7 +69,7 @@ jobs:
                         
             <body>
                <p>Sample Image</p>
-               <img src="help-center.jpg" alt="Help Center Image" width="50" height="50">
+               <img src="help-center.jpg" alt="Help Center Image" width="60" height="40">
             </body>
 
             HELP CENTER IMAGE ... TBD <br><br>
