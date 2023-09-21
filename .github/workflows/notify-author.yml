@@ -1,36 +1,31 @@
-name: Email Notification to commit user
+name: Notify Author
 on:
   push:
-  pull_request:
     branches:
       - main          # Can be changed to master
-      #- feature/test  # Can be changed to your feature branch for tests
 
 jobs:
-  Notification-to-Commit-User:
+  Notify-Author:
     runs-on: ubuntu-latest
     env:
         NOTIFICATION_SMTP_USER: ${{secrets.SMTP_USER}}
         NOTIFICATION_SMTP_PASSWORD: ${{secrets.SMTP_PASSWORD}}
         NOTIFICATION_FROM: ALVDIGITAL Systems (API)
         NOTIFICATION_SUBJECT: Production Deployment Modification
-        NOTIFICATION_BCC_RECIPIENTS: vijaik.nd@gmail.com, vishali.nagathevan@gmail.com #service@alvdigital.com,kumvijaya@gmail.com
+        # NOTIFICATION_BCC_RECIPIENTS: service@alvdigital.com,kumvijaya@gmail.com
 
     steps:
-      - name: Set up Git repository
+      - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
       
-      - name: To get author information
+      - name: Get author
         id: author
         run: |
 
           author_name=$(git log -n 1 --pretty=format:%an)
           author_email=$(git log -n 1 --pretty=format:%ae)
-
-          #echo "$username username"
-          #echo "$email_id email_id-Hello"
 
           echo "name=$author_name" >> $GITHUB_OUTPUT
           echo "email=$author_email" >> $GITHUB_OUTPUT
@@ -70,7 +65,7 @@ jobs:
             To create tickets in Jira, from within the ALVCODE project, please use the Automation Action on the right             
             "Create Help Center / GI tickets" as shown below: <br><br>
             
-            IMAGE ... TBD <br><br>
+            HELP CENTER IMAGE ... TBD <br><br>
 
             Please do this now! <p>
             
