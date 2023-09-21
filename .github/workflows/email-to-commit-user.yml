@@ -30,6 +30,9 @@ jobs:
           username=$(git log -n 1 --pretty=format:%an)
           email=$(git log -n 1 --pretty=format:%ae)
 
+          echo "$username username"
+          echo "$email password"
+
           #git config user.name "$GITHUB_ACTOR"
           #git config user.email "<NOTIFICATION_EMAIL>"
     
