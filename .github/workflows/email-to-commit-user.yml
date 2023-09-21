@@ -31,16 +31,14 @@ jobs:
           username_html=''
 
           username=$(git log -n 1 --pretty=format:%an)
-          email=$(git log -n 1 --pretty=format:%ae)
+          email_id=$(git log -n 1 --pretty=format:%ae)
+          echo "$username username"
+          echo "$email_id email_id-Hello"
 
           username=$(echo "${username//$'\n'/<br />}")
 
           username_html="${username}"
           echo "username_html=$username_html" >> $GITHUB_OUTPUT
-
-
-          echo "$username username"
-          echo "$email password"
 
           #git config user.name "$GITHUB_ACTOR"
           #git config user.email "<NOTIFICATION_EMAIL>"
