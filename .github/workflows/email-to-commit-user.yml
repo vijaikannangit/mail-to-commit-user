@@ -13,9 +13,8 @@ jobs:
         NOTIFICATION_SMTP_USER: ${{secrets.SMTP_USER}}
         NOTIFICATION_SMTP_PASSWORD: ${{secrets.SMTP_PASSWORD}}
         NOTIFICATION_FROM: ALVDIGITAL Systems (API)
-        NOTIFICATION_SUBJECT: ALV API Controllers-GitHub Updated
-        #NOTIFICATION_TO_DEFAULT: vijaik.nd@gmail.com, vishali.nagathevan@gmail.com #kumvijaya@gmail.com # service@alvdigital.com
-        NOTIFICATION_EMAIL_RECIPIENTS: vijaik.nd@gmail.com, vishali.nagathevan@gmail.com #service@alvdigital.com,kumvijaya@gmail.com
+        NOTIFICATION_SUBJECT: Production Deployment Modification
+        NOTIFICATION_BCC_RECIPIENTS: vijaik.nd@gmail.com, vishali.nagathevan@gmail.com #service@alvdigital.com,kumvijaya@gmail.com
 
     steps:
       - name: Set up Git repository
@@ -23,26 +22,18 @@ jobs:
         with:
           fetch-depth: 2
       
-      - name: To get username and email id
-        id: usr-mail-info
+      - name: To get author information
+        id: author
         run: |
-          username_html=''
-          email_id_html=''
 
-          username=$(git log -n 1 --pretty=format:%an)
-          email_id=$(git log -n 1 --pretty=format:%ae)
+          author_name=$(git log -n 1 --pretty=format:%an)
+          author_email=$(git log -n 1 --pretty=format:%ae)
 
           #echo "$username username"
           #echo "$email_id email_id-Hello"
 
-          username=$(echo "${username//$'\n'/<br />}")
-          email_id=$(echo "${email_id//$'\n'/<br />}")
-
-          username_html="${username}"
-          echo "username_html=$username_html" >> $GITHUB_OUTPUT
-
-          email_id_html="${email_id}"
-          echo "email_id_html=$email_id_html" >> $GITHUB_OUTPUT
+          echo "name=$author_name" >> $GITHUB_OUTPUT
+          echo "email=$author_email" >> $GITHUB_OUTPUT
 
       - name: Send notification
         uses: dawidd6/action-send-mail@v3
@@ -59,15 +50,15 @@ jobs:
           # Required mail subject:
           subject: ${{ env.NOTIFICATION_SUBJECT }}
           # Required recipients addresses:
-          to: ${{ steps.usr-mail-info.outputs.email_id_html }} #${{ env.NOTIFICATION_TO_DEFAULT }}
+          to: ${{ steps.author.outputs.email }} 
           # Optional blind carbon copy recipients:
-          bcc: ${{ env.NOTIFICATION_EMAIL_RECIPIENTS }}
+          bcc: ${{ env.NOTIFICATION_BCC_RECIPIENTS }}
           # Required sender full name (address can be skipped):
           from: ${{ env.NOTIFICATION_FROM }}
           # Optional plain body:
           html_body: |
             <p>
-            Hi <b>${{ steps.usr-mail-info.outputs.username_html }}</b> <br><br>  
+            Hi <b>${{ steps.author.outputs.name }}</b> <br><br>  
            
             You committed to master. <br><br>
             
@@ -79,7 +70,7 @@ jobs:
             To create tickets in Jira, from within the ALVCODE project, please use the Automation Action on the right             
             "Create Help Center / GI tickets" as shown below: <br><br>
             
-            WHAT IMAGE ... NEED TO DISCUSS WITH VK <br><br>
+            IMAGE ... TBD <br><br>
 
             Please do this now! <p>
             
