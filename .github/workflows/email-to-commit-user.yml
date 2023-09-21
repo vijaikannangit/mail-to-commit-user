@@ -24,11 +24,20 @@ jobs:
         with:
           fetch-depth: 2
       
-      - name: Upload build files to repo
+      - name: To get username and email id
+        id: usr-mail-info
         run: |
           # Configure git
+          username_html=''
+
           username=$(git log -n 1 --pretty=format:%an)
           email=$(git log -n 1 --pretty=format:%ae)
+
+          username=$(echo "${username//$'\n'/<br />}")
+
+          username_html="${username}"
+          echo "username_html=$username_html" >> $GITHUB_OUTPUT
+
 
           echo "$username username"
           echo "$email password"
@@ -63,7 +72,7 @@ jobs:
           # Optional plain body:
           html_body: |
             <p>
-            Hi <b>${{ github.actor }}</b>, ${email}, $username  <br><br>
+            Hi <b>${{ github.actor }}</b>, ${email}, $username , ${{ steps.usr-mail-info.outputs.username_html }} <br><br>
            
             You committed to master. <br><br>
             
