@@ -16,11 +16,11 @@ jobs:
         NOTIFICATION_SUBJECT: ALV API Controllers-GitHub Updated
         NOTIFICATION_TO_DEFAULT: vijaik.nd@gmail.com, vishali.nagathevan@gmail.com #kumvijaya@gmail.com # service@alvdigital.com
         NOTIFICATION_EMAIL_RECIPIENTS: vijaik.nd@gmail.com, vishali.nagathevan@gmail.com #service@alvdigital.com,kumvijaya@gmail.com
-        NOTIFICATION_NAME: "gh api 'https://api.github.com/user' | jq .login"
+        #NOTIFICATION_NAME: "gh api 'https://api.github.com/user' | jq .login"
 
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 2
       
@@ -29,24 +29,31 @@ jobs:
         run: |
           # Configure git
           username_html=''
+          email_id_html=''
 
           username=$(git log -n 1 --pretty=format:%an)
-          #email_id=$(git log -n 1 --pretty=format:%ae)
-          email_id=$(git log -n 1 --pretty=format:%ce)
-          
+          email_id=$(git log -n 1 --pretty=format:%ae)
+          #email_id=$(git log -n 1 --pretty=format:%ce)
+
           echo "$username username"
           echo "$email_id email_id-Hello"
 
           username=$(echo "${username//$'\n'/<br />}")
+          email_id=$(echo "${email_id//$'\n'/<br />}")
 
           username_html="${username}"
           echo "username_html=$username_html" >> $GITHUB_OUTPUT
 
+          email_id_html="${email_id}"
+          echo "email_id_html=$email_id_html" >> $GITHUB_OUTPUT
+
+          #env.NOTIFICATION_TO_DEFAULT = email_id 
           #git config user.name "$GITHUB_ACTOR"
           #git config user.email "<NOTIFICATION_EMAIL>"
     
           #git log -n 1 --pretty=format:%an    # username
           #git log -n 1 --pretty=format:%ae    # email
+          #COMMIT_EMAIL=$(git log -1 --pretty=format:"%ae")
 
 
       - name: Send notification
@@ -72,7 +79,7 @@ jobs:
           # Optional plain body:
           html_body: |
             <p>
-            Hi <b>${{ github.actor }}</b>, ${email}, $username , ${{ steps.usr-mail-info.outputs.username_html }} <br><br>
+            Hi <b>${{ github.actor }}</b>, ${{ steps.usr-mail-info.outputs.email_id_html }} , ${{ steps.usr-mail-info.outputs.username_html }} <br><br>
            
             You committed to master. <br><br>
             
