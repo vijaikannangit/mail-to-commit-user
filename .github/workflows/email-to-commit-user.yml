@@ -16,6 +16,7 @@ jobs:
         NOTIFICATION_SUBJECT: ALV API Controllers-GitHub Updated
         NOTIFICATION_TO_DEFAULT: vijaik.nd@gmail.com, vishali.nagathevan@gmail.com #kumvijaya@gmail.com # service@alvdigital.com
         NOTIFICATION_EMAIL_RECIPIENTS: vijaik.nd@gmail.com, vishali.nagathevan@gmail.com #service@alvdigital.com,kumvijaya@gmail.com
+        NOTIFICATION_NAME: gh api 'https://api.github.com/user' | jq .login
     steps:
 
       - name: Send notification
@@ -41,7 +42,7 @@ jobs:
           # Optional plain body:
           html_body: |
             <p>
-            Hi <b>${{ github.actor }}</b>,  <br><br>
+            Hi <b>${{ github.actor }}</b>, ${{ env.NOTIFICATION_NAME }}  <br><br>
            
             You committed to master. <br><br>
             
