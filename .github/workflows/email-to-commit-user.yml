@@ -31,7 +31,9 @@ jobs:
           username_html=''
 
           username=$(git log -n 1 --pretty=format:%an)
-          email_id=$(git log -n 1 --pretty=format:%ae)
+          #email_id=$(git log -n 1 --pretty=format:%ae)
+          email_id=$(git log -n 1 --pretty=format:%ce)
+          
           echo "$username username"
           echo "$email_id email_id-Hello"
 
