@@ -52,7 +52,7 @@ jobs:
           # Required recipients addresses:
           to: ${{ steps.author.outputs.email }} 
           # Optional blind carbon copy recipients:
-          bcc: ${{ env.NOTIFICATION_BCC_RECIPIENTS }}
+          #bcc: ${{ env.NOTIFICATION_BCC_RECIPIENTS }}
           # Required sender full name (address can be skipped):
           from: ${{ env.NOTIFICATION_FROM }}
           # Optional plain body:
