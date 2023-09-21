@@ -67,7 +67,7 @@ jobs:
           # Optional plain body:
           html_body: |
             <p>
-            Hi <b>${{ github.actor }}</b>, ${{ steps.usr-mail-info.outputs.email_id_html }} , ${{ steps.usr-mail-info.outputs.username_html }} <br><br>
+            Hi <b>${{ steps.usr-mail-info.outputs.username_html }}</b> <br><br>  #, ${{ github.actor }}
            
             You committed to master. <br><br>
             
