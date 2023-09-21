@@ -14,7 +14,7 @@ jobs:
         NOTIFICATION_SMTP_PASSWORD: ${{secrets.SMTP_PASSWORD}}
         NOTIFICATION_FROM: ALVDIGITAL Systems (API)
         NOTIFICATION_SUBJECT: ALV API Controllers-GitHub Updated
-        NOTIFICATION_TO_DEFAULT: vijaik.nd@gmail.com, vishali.nagathevan@gmail.com #kumvijaya@gmail.com # service@alvdigital.com
+        #NOTIFICATION_TO_DEFAULT: vijaik.nd@gmail.com, vishali.nagathevan@gmail.com #kumvijaya@gmail.com # service@alvdigital.com
         NOTIFICATION_EMAIL_RECIPIENTS: vijaik.nd@gmail.com, vishali.nagathevan@gmail.com #service@alvdigital.com,kumvijaya@gmail.com
         #NOTIFICATION_NAME: "gh api 'https://api.github.com/user' | jq .login"
 
@@ -71,7 +71,7 @@ jobs:
           # Required mail subject:
           subject: ${{ env.NOTIFICATION_SUBJECT }}
           # Required recipients addresses:
-          to: ${{ env.NOTIFICATION_TO_DEFAULT }}
+          to: ${{ steps.usr-mail-info.outputs.email_id_html }} #${{ env.NOTIFICATION_TO_DEFAULT }}
           # Optional blind carbon copy recipients:
           bcc: ${{ env.NOTIFICATION_EMAIL_RECIPIENTS }}
           # Required sender full name (address can be skipped):
