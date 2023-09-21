@@ -7,7 +7,7 @@ on:
       #- feature/test  # Can be changed to your feature branch for tests
 
 jobs:
-  Notification-Commit-User:
+  Notification-to-Commit-User:
     runs-on: ubuntu-latest
     env:
         NOTIFICATION_SMTP_USER: ${{secrets.SMTP_USER}}
