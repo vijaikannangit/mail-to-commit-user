@@ -58,13 +58,16 @@ jobs:
             You committed to master. <br><br>
             
             Do not forget to: <br>
-            - inform your colleagues in the Skype "New on Live" group <br>
-            - create a Help Center ticket in Jira (usually required) <br>
-            - create a GI ticket in Jira (usually required) <br><br>
+            <ul>
+              <li> Inform your colleagues in the Skype "New on Live" group </li> <br>
+              <li> Create a Help Center ticket in <b><i>Jira</i></b> (usually required) </li> <br>
+              <li> Create a GI ticket in <b><i>Jira</i></b> (usually required) </li> <br><br>
+            </ul>
             
-            To create tickets in Jira, from within the ALVCODE project, please use the Automation Action on the right             
-            "Create Help Center / GI tickets" as shown below: <br><br>
+            To create tickets in Jira, from within the <b>ALVCODE</b> project, please use the Automation Action on the right             
+            "<u>Create Help Center</u> / <u>GI tickets<></u>" as shown below: <br><br>
             
+            <img src="help-center.jpg" alt="Help Center Image" width="250" height="150">
             HELP CENTER IMAGE ... TBD <br><br>
 
             Please do this now! <p>
