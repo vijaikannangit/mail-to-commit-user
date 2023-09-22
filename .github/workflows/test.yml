@@ -11,15 +11,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Attach file
         run: echo "This is the content of the attachment" > test.txt
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
-          python-version: 3.x
+          python-version: 3.10
 
       - name: Install dependencies
         run: pip install yagmail
