@@ -94,4 +94,4 @@ jobs:
           convert_markdown: true
           content_type: text/html
           # Optional attachments:
-          attachments: 'test.txt'
+          attachments: 'C:\Vijaik\Freelancing\email-to-commit-user\.github\workflows\test.txt'
