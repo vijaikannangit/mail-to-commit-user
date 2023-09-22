@@ -1,0 +1,42 @@
+name: Send Email with Attachment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  send_email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Attach file
+        run: echo "This is the content of the attachment" > test.txt
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install yagmail
+
+      - name: Send email
+        run: |
+          import yagmail
+
+          yag = yagmail.SMTP(vijaik.nd@gmail.com, 'neverforget@1205')
+
+          to = 'vijaik.nd@gmail.com'  # Replace with the recipient's email address
+          subject = 'Email Subject'
+          body = 'This is the email body.'
+          attachment = 'test.txt'
+
+          yag.send(
+              to=to,
+              subject=subject,
+              contents=[body, attachment],
+          )
