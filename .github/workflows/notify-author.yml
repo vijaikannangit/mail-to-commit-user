@@ -93,4 +93,4 @@ jobs:
           # convert_markdown: true
           content_type: text/html
           # Optional attachments:
-          attach_file: 'help-center'
+          attach_file: 'help-center.jpg'
