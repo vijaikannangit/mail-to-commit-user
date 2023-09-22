@@ -68,8 +68,8 @@ jobs:
             "<u><b>Create Help Center</b></u> / <u><b>GI tickets</b></u>" as shown below: <br><br>
                         
             <body>
-               <p>Sample Image Myfile</p>
-               <img src="help-center.jpg" alt="Help Center Image" width="60" height="40">
+               <p>Sample Image Fullfile</p>
+               <img src="C:\Vijaik\Freelancing\email-to-commit-user\.github\workflows\help-center.jpg" alt="Help Center Image" width="60" height="40">
             </body>
 
             HELP CENTER IMAGE ... TBD <br><br>
