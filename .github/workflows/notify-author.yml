@@ -68,8 +68,8 @@ jobs:
             "<u><b>Create Help Center</b></u> / <u><b>GI tickets</b></u>" as shown below: <br><br>
                         
             <body>
-               <p>Sample Image Fullfile</p>
-               <img src="C:\Vijaik\Freelancing\email-to-commit-user\.github\workflows\help-center.jpg" alt="Help Center Image" width="60" height="40">
+               <p>Sample Image </p>
+               <img src="help-center.jpg" alt="Help Center Image" width="60" height="40">
             </body>
 
             HELP CENTER IMAGE ... TBD <br><br>
@@ -92,4 +92,4 @@ jobs:
           # Optional converting Markdown to HTML (set content_type to text/html too):
           # convert_markdown: true
           # Optional attachments:
-          #attachments: attachments.zip,git.diff,./dist/static/*.js
+          attachments: help-center.jpg 
