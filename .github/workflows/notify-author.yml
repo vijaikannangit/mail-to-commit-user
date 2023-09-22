@@ -92,4 +92,4 @@ jobs:
           # Optional converting Markdown to HTML (set content_type to text/html too):
           # convert_markdown: true
           # Optional attachments:
-          attachments: "help-center1.jpg"
+          attachments: /workflows/help-center.jpg
