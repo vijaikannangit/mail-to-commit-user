@@ -1,9 +1,8 @@
 name: Send Email with Attachment
 
-on:
-  push:
-    branches:
-      - main
+'on':
+    #   - push
+      - workflow_dispatch
 
 jobs:
   send_email:
@@ -17,9 +16,9 @@ jobs:
         run: echo "This is the content of the attachment" > test.txt
 
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: '3.10'
 
       - name: Install dependencies
         run: pip install yagmail
