@@ -92,4 +92,4 @@ jobs:
           # Optional converting Markdown to HTML (set content_type to text/html too):
           # convert_markdown: true
           # Optional attachments:
-          attachments: test.txt,help-center.jpg
+          attachments: help-center.jpg,test.txt
